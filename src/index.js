@@ -1,4 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-console.log('hello');
+const el = <h1>Hellow wordl</h1>;
+
+ReactDOM.render(el, document.querySelector('#root'));
