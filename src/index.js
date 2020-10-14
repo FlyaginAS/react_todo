@@ -1,6 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const el = <h1>Hellow wordl</h1>;
+const TodoList = () => {
+  return (
+    <ul>
+      <li>Learn React</li>
+      <li>Build Awesome App</li>
+    </ul>
+  );
+};
+const AppHeader = () => {
+  return <h1>My todo LIst</h1>;
+};
+const SearchPanel = () => {
+  return <input placeholder="search" />;
+};
+const App = () => {
+  return (
+    <div>
+      <AppHeader />
+      <SearchPanel />
+      <TodoList />
+    </div>
+  );
+};
 
-ReactDOM.render(el, document.querySelector('#root'));
+ReactDOM.render(<App />, document.querySelector('#root'));
