@@ -54,28 +54,27 @@ export default class App extends Component {
 
   onToggleDone = (id) => {
     this.setState(({ todoData }) => {
-      const idx = todoData.findIndex((el) => el.id === id);
-      const item = todoData[idx];
-      const modifiedItem = { ...item, done: !item.done };
-      const copyArr = [...this.state.todoData];
-      copyArr.splice(idx, 1, modifiedItem);
       return {
-        todoData: copyArr,
+        todoData: this.toggleProperty(todoData, id, 'done'),
       };
     });
   };
 
   onImportant = (id) => {
     this.setState(({ todoData }) => {
-      const idx = todoData.findIndex((el) => el.id === id);
-      const item = todoData[idx];
-      const modifiedItem = { ...item, important: !item.important };
-      const copyArr = [...this.state.todoData];
-      copyArr.splice(idx, 1, modifiedItem);
       return {
-        todoData: copyArr,
+        todoData: this.toggleProperty(todoData, id, 'important'),
       };
     });
+  };
+
+  toggleProperty = (arr, id, propName) => {
+    const idx = arr.findIndex((el) => el.id === id);
+    const item = arr[idx];
+    const modifiedItem = { ...item, [propName]: !item[propName] };
+    const copyArr = [...arr];
+    copyArr.splice(idx, 1, modifiedItem);
+    return copyArr;
   };
 
   render() {
