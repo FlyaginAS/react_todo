@@ -3,10 +3,7 @@ import React from 'react';
 import './todo-list-item.css';
 
 const TodoListItem = ({ item, onDeleted, onImportant, onToggleDone }) => {
-  console.log(item);
-
   const { important, done, id, label } = item;
-  console.log(label);
 
   let classNames = 'todo-list-item';
   if (done) {
@@ -41,4 +38,4 @@ const TodoListItem = ({ item, onDeleted, onImportant, onToggleDone }) => {
   );
 };
 
-export default TodoListItem;
+export default TodoListItem; //
