@@ -20,6 +20,7 @@ class AddItem extends Component {
     evt.preventDefault();
     const { addItem } = this.props;
     addItem(this.state.label);
+    this.setState({ label: '' });
   };
 
   render() {
@@ -39,4 +40,4 @@ class AddItem extends Component {
   }
 }
 
-export default AddItem; //
+export default AddItem; ////
