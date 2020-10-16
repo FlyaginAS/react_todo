@@ -1,3 +1,6 @@
 .addItem {
   width: 5rem;
 }
+.addItemInput {
+  width: 100%;
+}

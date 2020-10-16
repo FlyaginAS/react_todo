@@ -41,11 +41,11 @@ export default class App extends Component {
     });
   };
 
-  addItem = () => {
+  addItem = (text) => {
     this.setState(({ todoData }) => {
       const copyArr = [...todoData];
 
-      copyArr.push(this.createItem('New Item'));
+      copyArr.push(this.createItem(text));
       return {
         todoData: copyArr,
       };
