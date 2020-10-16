@@ -18,6 +18,7 @@ export default class App extends Component {
       this.createItem('Have a lunch'),
     ],
     filterText: '',
+    filter: 'all',
   };
 
   createItem(text) {
@@ -90,13 +91,34 @@ export default class App extends Component {
     this.setState({ filterText: text });
   };
 
+  changeFilterState = (name) => {
+    console.log('filter');
+    this.setState({ filter: name });
+  };
+
+  filter = (arr, text) => {
+    switch (text) {
+      case 'all':
+        return arr;
+        break;
+      case 'active':
+        return arr.filter((el) => !el.done);
+        break;
+      case 'done':
+        return arr.filter((el) => el.done);
+        break;
+      default:
+        return arr;
+    }
+  };
+
   render() {
     const doneCount = this.state.todoData.filter((el) => el.done).length;
     const todoCount = this.state.todoData.length - doneCount;
 
-    const visibleItems = this.search(
-      this.state.todoData,
-      this.state.filterText
+    const visibleItems = this.filter(
+      this.search(this.state.todoData, this.state.filterText),
+      this.state.filter
     );
 
     return (
@@ -104,7 +126,10 @@ export default class App extends Component {
         <AppHeader toDo={todoCount} done={doneCount} />
         <div className="top-panel d-flex">
           <SearchPanel onSearch={this.changeFilterText} />
-          <ItemStatusFilter />
+          <ItemStatusFilter
+            filter={this.changeFilterState}
+            active={this.state.filter}
+          />
         </div>
 
         <TodoList
